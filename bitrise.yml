@@ -15,7 +15,7 @@ workflows:
                 /opt/android-sdk-linux/tools/bin/sdkmanager "--verbose" "--channel=0" "emulator"
                 /opt/android-sdk-linux/tools/bin/sdkmanager "--verbose" "system-images;android-30;google_apis_playstore;x86"
                 /opt/android-sdk-linux/cmdline-tools/tools/bin/avdmanager "--verbose" "create" "avd" "--force" "--name" "emulator" "--device" "pixel_2" "--package" "system-images;android-30;google_apis_playstore;x86" "--tag" "google_apis_playstore" "--abi" "x86" "--sdcard" "512M"
-/opt/android-sdk-linux/emulator/emulator "@emulator" "-verbose" "-show-kernel" "-no-audio" "-no-window" "-no-boot-anim" "-netdelay" "none" "-no-snapshot" "-wipe-data" "-gpu" "swiftshader_indirect" "-camera-back" "none" "-camera-front" "none"
+                /opt/android-sdk-linux/emulator/emulator "@emulator" "-verbose" "-show-kernel" "-no-audio" "-no-window" "-no-boot-anim" "-netdelay" "none" "-no-snapshot" "-wipe-data" "-gpu" "swiftshader_indirect" "-camera-back" "none" "-camera-front" "none"
       - avd-manager@1:
           inputs:
             - tag: google_apis_playstore
