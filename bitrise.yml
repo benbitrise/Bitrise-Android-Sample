@@ -127,7 +127,7 @@ workflows:
     - file-downloader@1:
         inputs:
           - destination: "$HOME/keystores/my_keystore.jks"
-          - source: "BITRISEIO_KEYSTORE_FILE_URL"
+          - source: $BITRISEIO_KEYSTORE_FILE_URL
     - android-build@0:
         inputs:
         - project_location: $PROJECT_LOCATION
