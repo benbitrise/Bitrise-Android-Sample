@@ -124,25 +124,15 @@ workflows:
     - install-missing-android-tools@2:
         inputs:
         - gradlew_path: $PROJECT_LOCATION/gradlew
-    - android-lint@0:
+    - file-downloader@1:
         inputs:
-        - project_location: $PROJECT_LOCATION
-        - module: $MODULE
-        - variant: release
-    - android-unit-test@1:
-        inputs:
-        - project_location: $PROJECT_LOCATION
-        - module: $MODULE
-        - variant: release
+          - destination: "$HOME/keystores/my_keystore.jks"
+          - source: "BITRISEIO_KEYSTORE_FILE_URL"
     - android-build@0:
         inputs:
         - project_location: $PROJECT_LOCATION
         - module: $MODULE
         - build_type: aab
         - variant: release
-    - sign-apk@1:
-        run_if: '{{getenv "BITRISEIO_ANDROID_KEYSTORE_URL" | ne ""}}'
-        inputs:
-        - use_apk_signer: 'true'
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}

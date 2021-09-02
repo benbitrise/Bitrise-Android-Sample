@@ -6,6 +6,15 @@ plugins {
 android {
     compileSdkVersion 30
 
+    signingConfigs {
+        release {
+            keyAlias System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS")
+            keyPassword System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
+            storeFile file(System.getenv("HOME") + "/keystores/my_keystore.jks")
+            storePassword System.getenv("BITRISEIO_ANDROID_KEYSTORE_PASSWORD")
+        }
+    }
+
     defaultConfig {
         applicationId "io.bitrise.sample.android"
         minSdkVersion 21
@@ -20,6 +29,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
