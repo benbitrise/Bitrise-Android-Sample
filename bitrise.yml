@@ -142,7 +142,7 @@ workflows:
         - module: $MODULE
         - build_type: aab
         - variant: release
-        - arguments: '--debug >> android_build.log'
+        - arguments: "--debug >> android_build.log"
     - script@1:
         inputs:
           - content: |-
