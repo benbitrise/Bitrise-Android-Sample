@@ -143,6 +143,7 @@ workflows:
               touch android_build.log
               /bitrise/src/gradlew :app:bundleRelease --debug >> android_build.log
               mv android_build.log $BITRISE_DEPLOY_DIR/android_build.log
+              mv *.aab $BITRISE_DEPLOY_DIR/
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     meta:
