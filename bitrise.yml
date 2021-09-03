@@ -134,7 +134,15 @@ workflows:
         - module: $MODULE
         - build_type: aab
         - variant: release
-        - arguments: '--debug'
+        - arguments: '--debug >> android_build.log'
+    - script@1:
+        inputs:
+          - content: |-
+              #!/usr/bin/env bash
+              set -e
+              set -x
+
+              mv android_build.log $BITRISE_DEPLOY_DIR/android_build.log
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     meta:
