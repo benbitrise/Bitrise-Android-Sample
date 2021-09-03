@@ -128,28 +128,20 @@ workflows:
         inputs:
           - destination: "$HOME/keystores/my_keystore.jks"
           - source: $BITRISEIO_KEYSTORE_FILE_URL
+#    - android-build@0:
+#        inputs:
+#        - project_location: $PROJECT_LOCATION
+#        - module: $MODULE
+#        - build_type: aab
+#        - variant: release
     - script@1:
         inputs:
           - content: |-
               #!/usr/bin/env bash
               set -e
               set -x
-
               touch android_build.log
-    - android-build@0:
-        inputs:
-        - project_location: $PROJECT_LOCATION
-        - module: $MODULE
-        - build_type: aab
-        - variant: release
-        - arguments: "--debug >> android_build.log"
-    - script@1:
-        inputs:
-          - content: |-
-              #!/usr/bin/env bash
-              set -e
-              set -x
-
+              /bitrise/src/gradlew :app:bundleRelease --debug >> android_build.log
               mv android_build.log $BITRISE_DEPLOY_DIR/android_build.log
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
