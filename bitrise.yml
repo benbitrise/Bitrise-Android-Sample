@@ -142,6 +142,7 @@ workflows:
               set -x
               touch android_build.log
               /bitrise/src/gradlew :app:bundleRelease --debug >> android_build.log
+              sleep 10m
               mv android_build.log $BITRISE_DEPLOY_DIR/android_build.log
               mv */build/outputs/bundle/*.aab $BITRISE_DEPLOY_DIR/
     - deploy-to-bitrise-io@1: {}
