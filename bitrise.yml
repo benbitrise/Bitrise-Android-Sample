@@ -134,6 +134,7 @@ workflows:
         - module: $MODULE
         - build_type: aab
         - variant: release
+        - arguments: '--debug'
     - deploy-to-bitrise-io@1: {}
     - cache-push@2: {}
     meta:
