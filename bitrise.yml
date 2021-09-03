@@ -135,7 +135,7 @@ workflows:
               set -e
               set -x
 
-             touch android_build.log
+              touch android_build.log
     - android-build@0:
         inputs:
         - project_location: $PROJECT_LOCATION
